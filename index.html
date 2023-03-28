@@ -20,11 +20,20 @@
         <h1 class="fs-4">Ultra Wallet Playground</h1>
       </a>
       <p>Blockchain Application Demo</p>
+      <p class="d-flex align-items-center justify-content-center">
+        Account:&nbsp;
+        <span
+          x-text="$store.app.blockchainAccount || '-'"
+          class="badge text-bg-primary"
+        ></span>
+      </p>
       <hr />
       <div class="d-grid gap-3 mb-auto">
-        <template x-for="action in $store.app.menuActions">
+        <template x-for="menuItem in $store.app.menuActions">
           <button
-            x-text="action.title"
+            x-text="menuItem.title"
+            @click="menuItem.action()"
+            :disabled="menuItem.disabled"
             class="btn btn-outline-light"
             type="button"
           ></button>
@@ -60,7 +69,7 @@
     <main class="p-4">
       <section>
         <template x-for="line in $store.app.terminalLines">
-          <code x-text="line" class="d-block mb-3"></code>
+          <pre x-text="line" class="d-block mb-2"></pre>
         </template>
       </section>
     </main>

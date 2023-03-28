@@ -1,12 +1,16 @@
+import { connectAction, connectIfTrusted } from './connect';
+import { stringifyValue } from './utils';
+
 document.addEventListener('alpine:init', () => {
   Alpine.store('app', {
-    terminalLines: ['ultra.connect()', 'ultra.disconnect()'],
+    blockchainAccount: '',
+    terminalLines: [],
     menuActions: [
-      { title: 'Connect', action: () => {} },
-      { title: 'Disconnect', action: () => {} },
-      { title: 'Sign Transaction', action: () => {} },
-      { title: 'Sign Message', action: () => {} },
-      { title: 'Smart Contract Builder', action: () => {} },
+      { title: 'Connect', action: connectAction, disabled: false },
+      { title: 'Disconnect', action: () => {}, disabled: true },
+      { title: 'Sign Transaction', action: () => {}, disabled: true },
+      { title: 'Sign Message', action: () => {}, disabled: true },
+      { title: 'Smart Contract Builder', action: () => {}, disabled: true },
     ],
     helpLinks: [
       {
@@ -22,5 +26,16 @@ document.addEventListener('alpine:init', () => {
       { title: 'Download Ultra', href: 'https://ultra.io/download' },
       { title: 'Discord community', href: 'https://discord.gg/WfJCN6YbGk' },
     ],
+    postTerminalLog(value) {
+      const log = stringifyValue(value);
+      this.terminalLines.push(log);
+    },
+    toggleMenuActions() {
+      this.menuActions.forEach((_, key) => {
+        this.menuActions[key].disabled = !this.menuActions[key].disabled;
+      });
+    },
   });
+
+  connectIfTrusted();
 });
