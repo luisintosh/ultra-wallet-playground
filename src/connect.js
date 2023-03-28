@@ -42,3 +42,12 @@ export async function connectIfTrusted() {
     localStorage.removeItem(EAGERLY_CONNECTION_KEY);
   }
 }
+
+export function disconnectedEvent() {
+  ultra.on('disconnect', (event) => {
+    // ui update
+    Alpine.store('app').postTerminalLog('[event] "disconnect" received');
+    Alpine.store('app').blockchainAccount = '-';
+    Alpine.store('app').toggleMenuActions();
+  });
+}

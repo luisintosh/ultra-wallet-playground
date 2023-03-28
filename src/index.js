@@ -1,4 +1,4 @@
-import { connectAction, connectIfTrusted } from './connect';
+import { connectAction, connectIfTrusted, disconnectedEvent } from './connect';
 import { stringifyValue } from './utils';
 
 document.addEventListener('alpine:init', () => {
@@ -38,4 +38,5 @@ document.addEventListener('alpine:init', () => {
   });
 
   connectIfTrusted();
+  disconnectedEvent();
 });
