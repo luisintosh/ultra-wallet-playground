@@ -1,7 +1,6 @@
-import basicSsl from '@vitejs/plugin-basic-ssl'
+import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default {
-  plugins: [
-    basicSsl()
-  ]
-}
+  base: '/ultra-wallet-playground',
+  plugins: [basicSsl()],
+};
