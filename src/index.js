@@ -1,4 +1,8 @@
 import { connectAction, connectIfTrusted, disconnectedEvent } from './connect';
+import {
+  signMessageExample,
+  tokenTransferExample,
+} from './transactionExamples';
 import { stringifyValue } from './utils';
 
 document.addEventListener('alpine:init', () => {
@@ -8,8 +12,12 @@ document.addEventListener('alpine:init', () => {
     menuActions: [
       { title: 'Connect', action: connectAction, disabled: false },
       { title: 'Disconnect', action: () => {}, disabled: true },
-      { title: 'Sign Transaction', action: () => {}, disabled: true },
-      { title: 'Sign Message', action: () => {}, disabled: true },
+      {
+        title: 'Sign Transaction',
+        action: tokenTransferExample,
+        disabled: true,
+      },
+      { title: 'Sign Message', action: signMessageExample, disabled: true },
       { title: 'Smart Contract Builder', action: () => {}, disabled: true },
     ],
     helpLinks: [
