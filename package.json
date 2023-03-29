@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite --https",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier:fix": "prettier --write ."
   },
   "devDependencies": {
     "@vitejs/plugin-basic-ssl": "^1.0.1",
+    "prettier": "2.8.7",
     "vite": "^4.2.1"
   },
   "repository": {

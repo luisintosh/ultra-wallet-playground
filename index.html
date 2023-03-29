@@ -16,19 +16,13 @@
     <main class="row g-0 align-items-stretch vh-100">
       <!-- sidebar -->
       <aside class="col-auto p-md-5 p-4 border-end">
-        <a
-          href="/"
-          class="d-flex align-items-center text-white text-decoration-none"
-        >
+        <a href="/" class="d-flex align-items-center text-white text-decoration-none">
           <h1 class="fs-4">Ultra Wallet Playground</h1>
         </a>
         <p class="text-center">Blockchain Application Demo</p>
         <p class="d-flex align-items-center justify-content-center">
           Account:&nbsp;
-          <span
-            x-text="$store.app.blockchainAccount || '-'"
-            class="badge text-bg-primary"
-          ></span>
+          <span x-text="$store.app.blockchainAccount || '-'" class="badge text-bg-primary"></span>
         </p>
         <hr />
         <div class="d-grid gap-3 mb-auto">
@@ -110,9 +104,7 @@
                 />
               </div>
               <div class="col">
-                <label for="smartContractAccount" class="form-label"
-                  >Contract</label
-                >
+                <label for="smartContractAccount" class="form-label">Contract</label>
                 <select
                   name="smartContractAccount"
                   id="smartContractAccount"
@@ -126,9 +118,7 @@
                 </select>
               </div>
               <div class="col">
-                <label for="smartContractAction" class="form-label"
-                  >Action</label
-                >
+                <label for="smartContractAction" class="form-label">Action</label>
                 <select
                   :disabled="$store.app.contractActions.length === 0"
                   @change="$store.app.onContractActionChange($event.target.value)"
@@ -150,9 +140,7 @@
               class="row gy-3"
             >
               <label>Data</label>
-              <template
-                x-for="actionField in $store.app.selectedContractAction?.fields"
-              >
+              <template x-for="actionField in $store.app.selectedContractAction?.fields">
                 <template x-if="actionField.type.fields.length === 0">
                   <div class="col-4">
                     <input
@@ -164,9 +152,7 @@
                   </div>
                 </template>
               </template>
-              <template
-                x-for="actionField in $store.app.selectedContractAction?.fields"
-              >
+              <template x-for="actionField in $store.app.selectedContractAction?.fields">
                 <template x-for="nestedActionField in actionField.type.fields">
                   <div
                     class="col-4"
@@ -186,11 +172,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-outline-secondary"
-              data-bs-dismiss="modal"
-            >
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
               Close
             </button>
             <button
@@ -206,9 +188,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="/src/index.js"></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </body>
 </html>
