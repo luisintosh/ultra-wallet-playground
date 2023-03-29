@@ -17,5 +17,8 @@
     "url": "git+https://github.com/luisintosh/ultra-wallet-playground.git"
   },
   "author": "@luisintosh",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "eosjs": "^22.1.0"
+  }
 }
