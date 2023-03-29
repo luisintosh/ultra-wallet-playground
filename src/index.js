@@ -1,4 +1,9 @@
-import { connectAction, connectIfTrusted, disconnectedEvent } from './connect';
+import {
+  connectAction,
+  connectIfTrusted,
+  disconnectAction,
+  disconnectedEvent,
+} from './connect';
 import {
   signMessageExample,
   tokenTransferExample,
@@ -11,7 +16,7 @@ document.addEventListener('alpine:init', () => {
     terminalLines: [],
     menuActions: [
       { title: 'Connect', action: connectAction, disabled: false },
-      { title: 'Disconnect', action: () => {}, disabled: true },
+      { title: 'Disconnect', action: disconnectAction, disabled: true },
       {
         title: 'Sign Transaction',
         action: tokenTransferExample,

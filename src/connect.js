@@ -8,8 +8,8 @@ function connectedAccount(response) {
   // set flag for eagerly wallet connection
   localStorage.setItem(EAGERLY_CONNECTION_KEY, true);
   // ui update
-  Alpine.store('app').postTerminalLog(response);
   Alpine.store('app').toggleMenuActions();
+  Alpine.store('app').postTerminalLog(response);
 }
 
 export async function connectAction() {
@@ -43,11 +43,27 @@ export async function connectIfTrusted() {
   }
 }
 
-export function disconnectedEvent() {
-  ultra.on('disconnect', (event) => {
+export async function disconnectAction() {
+  // ui update
+  Alpine.store('app').postTerminalLog('ultra.disconnect()');
+
+  try {
+    // ask wallet to disconnect the current web app
+    const response = await ultra.disconnect();
     // ui update
-    Alpine.store('app').postTerminalLog('[event] "disconnect" received');
+    Alpine.store('app').postTerminalLog(response);
+    // disconnectedEvent() is doing the disconnection ui update
+  } catch (error) {
+    // ui update
+    Alpine.store('app').postTerminalLog(error);
+  }
+}
+
+export function disconnectedEvent() {
+  ultra.on('disconnect', () => {
+    // ui update
     Alpine.store('app').blockchainAccount = '-';
     Alpine.store('app').toggleMenuActions();
+    Alpine.store('app').postTerminalLog('[event] "disconnect" received');
   });
 }
